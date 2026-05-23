@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL = 'https://web-app-builder-w0pr.onrender.com/api';
 
 const getHeaders = () => {
   const token = Cookies.get('token');
@@ -11,7 +11,52 @@ const getHeaders = () => {
 const api = {
   get: async (url) => {
     const response = await axios.get(`${BASE_URL}${url}`, { headers: getHeaders() });
+    return response;import axios from 'axios';
+import Cookies from 'js-cookie';
+
+const BASE_URL = 'https://web-app-builder-w0pr.onrender.com/api';
+
+const getHeaders = () => {
+  const token = Cookies.get('token');
+  return token ? { Authorization: `Bearer ${token}` } : {};
+};
+
+const api = {
+  get: async (url) => {
+    const response = await axios.get(`${BASE_URL}${url}`, {
+      headers: getHeaders()
+    });
     return response;
+  },
+
+  post: async (url, data) => {
+    const response = await axios.post(
+      `${BASE_URL}${url}`,
+      data,
+      { headers: getHeaders() }
+    );
+    return response;
+  },
+
+  put: async (url, data) => {
+    const response = await axios.put(
+      `${BASE_URL}${url}`,
+      data,
+      { headers: getHeaders() }
+    );
+    return response;
+  },
+
+  delete: async (url) => {
+    const response = await axios.delete(
+      `${BASE_URL}${url}`,
+      { headers: getHeaders() }
+    );
+    return response;
+  },
+};
+
+export default api;
   },
   post: async (url, data) => {
     const response = await axios.post(`${BASE_URL}${url}`, data, { headers: getHeaders() });
