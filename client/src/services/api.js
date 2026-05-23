@@ -13,7 +13,7 @@ const getHeaders = () => {
 const api = {
   get: async (url) => {
     const response = await axios.get(`${BASE_URL}${url}`, {
-      headers: getHeaders()
+      headers: getHeaders(),
     });
     return response;
   },
