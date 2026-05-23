@@ -12,28 +12,37 @@ const getHeaders = () => {
 
 const api = {
   get: async (url) => {
-    return axios.get(`${BASE_URL}${url}`, {
-      headers: getHeaders(),
+    const response = await axios.get(`${BASE_URL}${url}`, {
+      headers: getHeaders()
     });
+    return response;
   },
 
   post: async (url, data) => {
-    return axios.post(`${BASE_URL}${url}`, data, {
-      headers: getHeaders(),
-    });
+    const response = await axios.post(
+      `${BASE_URL}${url}`,
+      data,
+      { headers: getHeaders() }
+    );
+    return response;
   },
 
   put: async (url, data) => {
-    return axios.put(`${BASE_URL}${url}`, data, {
-      headers: getHeaders(),
-    });
+    const response = await axios.put(
+      `${BASE_URL}${url}`,
+      data,
+      { headers: getHeaders() }
+    );
+    return response;
   },
 
   delete: async (url) => {
-    return axios.delete(`${BASE_URL}${url}`, {
-      headers: getHeaders(),
-    });
-  },
+    const response = await axios.delete(
+      `${BASE_URL}${url}`,
+      { headers: getHeaders() }
+    );
+    return response;
+  }
 };
 
 export default api;
